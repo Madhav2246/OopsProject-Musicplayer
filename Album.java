@@ -11,48 +11,42 @@ public class Album {
         this.artist = artist;
         this.songs = new ArrayList<Songs>();
     }
-    public Album(){
 
-    }
-    public  Songs findSong(String title){
-        for(Songs checkSong : songs){
-            if(checkSong.getTitle().equals(title))
+    public Album() {}
+
+    public Songs findSong(String title) {
+        for (Songs checkSong : songs) {
+            if (checkSong.getTitle().equals(title))
                 return checkSong;
         }
         return null;
     }
 
-    public boolean addSong(String title, double duration){
-        if(findSong(title)==null){
-            songs.add(new Songs(title,duration));
-            //System.out.println(title+" has been successfully added.");
+    public boolean addSong(String title, double duration) {
+        if (findSong(title) == null) {
+            songs.add(new Songs(title, duration));
             return true;
-        }
-        else{
-            //System.out.println("Song already exists in this list.");
+        } else {
             return false;
         }
     }
-    public boolean addtoPlaylist(int trackNo, LinkedList<Songs> Playlist){
-        int index = trackNo-1;
-        if(index > 0 && index <=this.songs.size()){
-            Playlist.add(this.songs.get(index));
+
+    public boolean addToPlaylist(int trackNo, LinkedList<Songs> playlist) {
+        int index = trackNo - 1;
+        if (index >= 0 && index < this.songs.size()) {
+            playlist.add(this.songs.get(index));
             return true;
         }
-        //System.out.println("This album does not have song with the track number "+trackNo);
         return false;
     }
-    public boolean addtoPlaylist(String title, LinkedList<Songs> Playlist){
-        for(Songs checksong : this.songs){
-            if(checksong.getTitle().equals(title)){
-                Playlist.add(checksong);
+
+    public boolean addToPlaylist(String title, LinkedList<Songs> playlist) {
+        for (Songs checkSong : this.songs) {
+            if (checkSong.getTitle().equals(title)) {
+                playlist.add(checkSong);
                 return true;
             }
         }
-        //System.out.println("There is no such song in album with the title "+title);
         return false;
     }
-
-
-
 }
