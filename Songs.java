@@ -1,15 +1,13 @@
 public class Songs {
-    String title;
-    double duration;
+    private String title;
+    private double duration;
 
     public Songs(String title, double duration) {
         this.title = title;
         this.duration = duration;
     }
 
-    public Songs(){
-
-    }
+    public Songs() {}
 
     public String getTitle() {
         return title;
